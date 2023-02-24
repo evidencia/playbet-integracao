@@ -1,5 +1,5 @@
 import { Container, Content } from './styles';
-import { User, Lock, Envelope } from 'phosphor-react';
+import { User } from 'phosphor-react';
 import { Link, useNavigate } from 'react-router-dom';
 import requests, { setTokenHeaders } from '../../services/requests';
 import { useState } from 'react';
