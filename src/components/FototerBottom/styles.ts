@@ -41,4 +41,9 @@ export const Container = styled.div`
       }
     }
   }
+
+    //Mobile 
+    @media only screen and (max-width: 600px) {
+      padding: 0 2rem;
+    }
 `;

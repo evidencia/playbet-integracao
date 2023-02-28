@@ -61,4 +61,30 @@ export const Container = styled.div`
     }
   }
 
+  //Mobile 
+  @media only screen and (max-width: 600px) {
+    padding: 0 2rem;
+
+    main{
+      align-items: start;
+      flex-direction: column;
+
+      div{
+        img{
+          width: 130px;
+          height: 130px;
+          display: block;
+        }
+
+        p{
+          display: none;
+        }
+      }
+
+      img{
+          display: none;
+        }
+    }
+  }
+
 `;

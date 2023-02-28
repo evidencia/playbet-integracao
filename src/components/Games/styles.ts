@@ -33,20 +33,16 @@ export const Container = styled.div`
 
         &:hover{
           filter: brightness(0.9);
-        }
-        
+        } 
       }
-
-      
-    }
-    
-    
-  };
+    } 
+  }
 
   main{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 80px 0px;
     gap: 2rem;
 
     div{
@@ -64,8 +60,6 @@ export const Container = styled.div`
 
       }
 
-
-      margin: 80px 0px;
 
       img{
         max-width: 330px;
@@ -105,4 +99,24 @@ export const Container = styled.div`
       }
     }
   }
+
+   //Mobile 
+   @media only screen and (max-width: 600px) {
+    padding: 0 2rem;
+
+    header{
+      display: none !important;;
+    }
+
+    main{
+      flex-direction: column;
+      padding: 0 2rem;
+
+      div{
+        img{
+          max-width: 300px;
+        }
+      }
+    }
+   }
 `;

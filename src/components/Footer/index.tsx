@@ -9,7 +9,7 @@ export function Footer(){
     <Container>
 
       <main>
-         <div>
+        <div>
           <img src={logo} alt="logo" />
           <p>Todos os direitos reservados</p>
         </div>

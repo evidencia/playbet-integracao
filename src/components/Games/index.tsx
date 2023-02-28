@@ -23,6 +23,7 @@ export function Games(){
         </div>
        
       </header>
+      
       <main>
         <div>
           <img src={penaltiGame} alt="" />

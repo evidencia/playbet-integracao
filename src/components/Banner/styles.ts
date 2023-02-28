@@ -65,5 +65,38 @@ export const Container = styled.div`
       }
     }
   }
+
+  //Mobile 
+  @media only screen and (max-width: 600px) {
+    padding: 0 2rem;
+
+    main{
+      justify-content: flex-start;
+    
+      h1{
+        margin-top: 110px;
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+    }
+
+    div{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      button{
+        min-width: 230px;
+        color: white;
+        margin-top: 4rem !important;
+
+        & + button{
+          margin-top: 0.30rem !important;
+        }
+      }
+    }
+
+  }
   
 `;
