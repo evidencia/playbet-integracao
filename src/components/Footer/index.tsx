@@ -3,6 +3,7 @@ import logo from '../../assets/logo.png'
 import age from '../../assets/maior.png'
 
 import { Container } from './styles';
+import { Link } from 'react-router-dom';
 
 export function Footer(){
   return (
@@ -17,7 +18,7 @@ export function Footer(){
         <img src={age} alt="maior de 18 anos" />
 
         <ul>
-          <li><a href="">Sobre</a></li>
+          <li><Link to="">Sobre</Link></li>
           <li><a href="">Regras</a></li>
           <li><a href="">Termos de uso</a></li>
         </ul>

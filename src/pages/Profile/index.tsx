@@ -1,13 +1,13 @@
 import { Footer } from '../../components/Footer';
 import { FooterBottom } from '../../components/FototerBottom';
-import { Header } from '../../components/Header';
 import { Container } from './styles';
 import Modal from 'react-modal';
 import IUser, { IUpdateUser, UserProfile } from '../../interfaces/IUser';
-import { ReactEventHandler, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import requests from '../../services/requests';
 import formatDate from '../../utils/formatDate';
 import { InputEvent } from '../../types/InputEvent';
+import { Navbar } from '../../components/Navbar';
 
 export function Profile() {
   const [userData, setUserData] = useState<IUser>();
@@ -145,7 +145,7 @@ export function Profile() {
 
   return (
     <Container>
-      <Header />
+      <Navbar />
 
       <Modal
         isOpen={phoneModalIsOpen}

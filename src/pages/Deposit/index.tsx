@@ -3,7 +3,6 @@ import { Plus } from 'phosphor-react';
 import Modal from 'react-modal';
 import { Footer } from '../../components/Footer';
 import { FooterBottom } from '../../components/FototerBottom';
-import { Header } from '../../components/Header';
 
 import { Container } from './styles';
 import requests from '../../services/requests';
@@ -12,6 +11,7 @@ import ITransaction from '../../interfaces/ITransaction';
 import formatToBRL from '../../utils/formatToBRL';
 import setUserData from '../../utils/setUserData';
 import { InputEvent } from '../../types/InputEvent';
+import { Navbar } from '../../components/Navbar';
 
 export function Deposit() {
   const [depositModalIsOpen, setDepositModalIsOpen] = useState(false);
@@ -71,7 +71,7 @@ export function Deposit() {
 
   return (
     <Container>
-      <Header />
+      <Navbar />
       <section>
         <div>
           <button onClick={openModal}>

@@ -56,8 +56,8 @@ export const Container = styled.header`
       }
 
       img{
-        width: 340px;
-        height: 300px;
+        width: 450px;
+        height: 350px;
       }
     }
 `;

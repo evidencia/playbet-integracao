@@ -29,7 +29,7 @@ export function Games(){
           <img src={penaltiGame} alt="" />
 
           <button>
-            Play Now
+            Jogar agora
             <ArrowRight size={18} weight="bold" />
           </button>
         </div>
@@ -37,8 +37,8 @@ export function Games(){
         <div>
           <img src={avelhaGame} alt="" />
 
-          <button onClick={() => navigate('/game/tic-tac-toe')}>
-            Play Now
+          <button onClick={() => navigate('')}>
+            Jogar agora
             <ArrowRight size={18} weight="bold" />
           </button>
         </div>
