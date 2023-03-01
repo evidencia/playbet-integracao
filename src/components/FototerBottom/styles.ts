@@ -46,4 +46,9 @@ export const Container = styled.div`
     @media only screen and (max-width: 600px) {
       padding: 0 2rem;
     }
+
+    //Leptop 
+    @media only screen and (min-width: 768px) {
+      padding: 0 2rem;
+    }
 `;

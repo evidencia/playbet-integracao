@@ -119,4 +119,9 @@ export const Container = styled.div`
       }
     }
    }
+
+   //Leptop 
+   @media only screen and (min-width: 768px) {
+      padding: 0 2rem;
+    }
 `;

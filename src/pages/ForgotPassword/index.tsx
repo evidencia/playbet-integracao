@@ -1,4 +1,4 @@
-import { Container, Content } from './styles';
+import { Container } from './styles';
 import { Envelope} from 'phosphor-react';
 import { Link } from 'react-router-dom';
 
@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 export function ForgotPassword() {
   return (
     <Container>
-      <Content>
+      <section>
         <span className="avatar">
           <Envelope />
         </span>
@@ -19,7 +19,6 @@ export function ForgotPassword() {
           </div>
 
           <div className="link">
-            <Link to="#"></Link>
             <Link to="/signin">Já tenho conta? Login!</Link>
           </div>
 
@@ -27,7 +26,7 @@ export function ForgotPassword() {
             <button>Reset password</button>
           </div>
         </form>
-      </Content>
+      </section>
     </Container>
   );
 }

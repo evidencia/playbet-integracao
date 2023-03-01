@@ -1,4 +1,4 @@
-import { Container, Content } from './styles';
+import { Container } from './styles';
 import { User } from 'phosphor-react';
 import { Link, useNavigate } from 'react-router-dom';
 import requests, { setTokenHeaders } from '../../services/requests';
@@ -35,7 +35,7 @@ export function SignIn() {
 
   return (
     <Container>
-      <Content>
+      <section>
         <span className='avatar'>
           <User />
         </span>
@@ -72,7 +72,7 @@ export function SignIn() {
             <button type='submit'>Acessar</button>
           </div>
         </form>
-      </Content>
+      </section>
     </Container>
   );
 }

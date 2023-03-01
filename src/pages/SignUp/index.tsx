@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { Container, Content } from './styles';
+import { Container } from './styles';
 import {
   AppleLogo,
   FacebookLogo,
@@ -52,7 +52,7 @@ export function SignUp() {
 
   return (
     <Container>
-      <Content>
+      <section>
         <span className='avatar'>
           <User />
         </span>
@@ -137,11 +137,10 @@ export function SignUp() {
           </ul>
 
           <div className='link'>
-            <Link to='#'></Link>
             <Link to='/signin'>Já tenho conta? Login</Link>
           </div>
         </form>
-      </Content>
+      </section>
     </Container>
   );
 }

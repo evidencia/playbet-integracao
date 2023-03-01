@@ -96,4 +96,27 @@ export const Container = styled.header`
     }
     
   }
+
+  //Mobile 
+  @media only screen and ( max-width: 700px) {
+    padding: 0 2rem;
+
+    a{
+      img{
+        width: 130px;
+        height: 130px;
+      }
+    }
+
+    header{
+      display: none;
+    }
+  }
+
+
+    //Leptop 
+    @media only screen and (min-width: 701px) {
+      padding: 0 2rem;
+    }
+
 `;
