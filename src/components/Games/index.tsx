@@ -1,10 +1,10 @@
 import { Container } from './styles';
-import penaltiGame from '../../assets/gol.jpg'
-import avelhaGame from '../../assets/tic-tac.jpg'
+import penaltiGame from '../../assets/gol.jpg';
+import avelhaGame from '../../assets/tic-tac.jpg';
 import { ArrowLeft, ArrowRight } from 'phosphor-react';
 import { useNavigate } from 'react-router-dom';
 
-export function Games(){
+export function Games() {
   const navigate = useNavigate();
 
   return (
@@ -14,37 +14,34 @@ export function Games(){
 
         <div>
           <button>
-            <ArrowLeft size={18} weight="bold" />
+            <ArrowLeft size={18} weight='bold' />
           </button>
 
           <button>
-            <ArrowRight size={18} weight="bold" />
+            <ArrowRight size={18} weight='bold' />
           </button>
         </div>
-       
       </header>
-      
+
       <main>
         <div>
-          <img src={penaltiGame} alt="" />
+          <img src={penaltiGame} alt='' />
 
           <button>
             Jogar agora
-            <ArrowRight size={18} weight="bold" />
+            <ArrowRight size={18} weight='bold' />
           </button>
         </div>
 
         <div>
-          <img src={avelhaGame} alt="" />
+          <img src={avelhaGame} alt='Jogo da Velha' />
 
-          <button onClick={() => navigate('')}>
+          <button onClick={() => navigate('/game/tic-tac-toe')}>
             Jogar agora
-            <ArrowRight size={18} weight="bold" />
+            <ArrowRight size={18} weight='bold' />
           </button>
         </div>
-
       </main>
-        
     </Container>
   );
 }
