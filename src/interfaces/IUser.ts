@@ -2,7 +2,7 @@ export type UserProfile = {
   name?: string;
   cpf?: string;
   phoneNumber?: string;
-}
+};
 
 export interface IUpdateUser {
   user: {
@@ -11,6 +11,14 @@ export interface IUpdateUser {
     birthdate?: string;
   };
   profile: UserProfile;
+}
+
+export interface IUserInStorage {
+  id: string;
+  username: string;
+  email: string;
+  accountBalance: number;
+  isPhoneNumberValid: boolean;
 }
 
 export default interface IUser {

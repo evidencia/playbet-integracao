@@ -1,4 +1,5 @@
 import requests from '../services/requests';
+import { saveUserInStorage } from './localStorage';
 
 export default async function setUserData() {
   try {
@@ -12,7 +13,7 @@ export default async function setUserData() {
       isPhoneNumberValid: user.profile.validPhoneNumber,
     };
 
-    localStorage.setItem('playbet:user', JSON.stringify(userInformations));
+    saveUserInStorage(userInformations);
   } catch (error) {
     console.error(error);
   }

@@ -12,6 +12,7 @@ import formatToBRL from '../../utils/formatToBRL';
 import setUserData from '../../utils/setUserData';
 import { InputEvent } from '../../types/InputEvent';
 import { Navbar } from '../../components/Navbar';
+import { getUserInStorage } from '../../utils/localStorage';
 
 export function Withdraw() {
   const [withdrawModalIsOpen, setWithdrawModalIsOpen] = useState(false);
@@ -30,7 +31,7 @@ export function Withdraw() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const userData = JSON.parse(localStorage.getItem('playbet:user') || '');
+      const userData = getUserInStorage();
       if (!userData) throw new Error('User not found');
 
       await requests.post.transactions.create({
@@ -50,7 +51,7 @@ export function Withdraw() {
   const getTransactions = async () => {
     try {
       setFetching(true);
-      const userData = JSON.parse(localStorage.getItem('playbet:user') || '');
+      const userData = getUserInStorage();
 
       if (!userData) throw new Error('User not found');
       const transactions = await requests.get.transactions.fromUser(
@@ -127,9 +128,7 @@ export function Withdraw() {
           <input
             type='number'
             value={amount}
-            onChange={(e: InputEvent) =>
-              setAmount(Number(e.target.value))
-            }
+            onChange={(e: InputEvent) => setAmount(Number(e.target.value))}
             placeholder='Quantia (BRL)'
           />
 
