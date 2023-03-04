@@ -59,7 +59,7 @@ function GameResult({ gameResult, endGame }: GameResultProps) {
       const newBalance = playerBalance + betValue;
 
       gameService.gameResult(socketService.socket, {
-        bet: newBalance,
+        bet: betValue,
         result: 'Vitória',
       });
       dispatch(setPlayerBalance(newBalance));
@@ -70,7 +70,7 @@ function GameResult({ gameResult, endGame }: GameResultProps) {
       const newBalance = playerBalance - betValue;
 
       gameService.gameResult(socketService.socket, {
-        bet: newBalance,
+        bet: betValue,
         result: 'Derrota',
       });
       dispatch(setPlayerBalance(newBalance));
@@ -114,7 +114,11 @@ function GameResult({ gameResult, endGame }: GameResultProps) {
               <GameBetResult>{t('Saldo atual')}</GameBetResult>
 
               <DialogContentText fontWeight='bold'>
-                {formatToBRL(playerBalance)}
+                {formatToBRL(
+                  playerWon
+                    ? playerBalance + betValue
+                    : playerBalance - betValue
+                )}
               </DialogContentText>
             </PlayerBalanceContainer>
           </Box>
