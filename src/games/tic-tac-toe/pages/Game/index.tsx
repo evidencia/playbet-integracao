@@ -23,16 +23,18 @@ import soundPlay from '../../utils/soundPlay';
 import soundsData from '../../assets/sounds/soundsData';
 import { selectVolumeConfig } from '../../redux/slices/gameSlice';
 import {
+  selectBalance,
   setPlayerBalance,
-  setPlayerEmojis,
 } from '../../redux/slices/playerSlice';
 import ResultsModal from '../../components/ResultsModal';
 import { useTranslation } from 'react-i18next';
+import requests from '../../../../services/requests';
 
 function Game() {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const isInRoom = useAppSelector(selectIsInRoom);
+  const playerBalance = useAppSelector(selectBalance);
   const isVolumeOn = useAppSelector(selectVolumeConfig);
   const [gameResult, setGameResult] = useState('');
   const [alert, setAlert] = useState('');
@@ -55,9 +57,9 @@ function Game() {
     setPlayerTwoData,
   } = useContext(GameContext);
 
-  const setPlayerData = () => {
-    dispatch(setPlayerBalance(200));
-    dispatch(setPlayerEmojis([]));
+  const setPlayerData = async () => {
+    const user = await requests.get.auth.userInformations();
+    dispatch(setPlayerBalance(user.account.balance));
   };
 
   const skipPlayerTurn = () => {
@@ -134,10 +136,7 @@ function Game() {
   const handleGameStart = () => {
     if (!socketService.socket) return;
 
-    console.log('foi1');
     gameService.onGameStart(socketService.socket, (options) => {
-      console.log('foi');
-
       setGameStarted(true);
       setPlayerSymbol(options.symbol);
       setPlayerTurn(options.start);
@@ -161,7 +160,7 @@ function Game() {
 
   useEffect(() => {
     setPlayerData();
-  }, []);
+  }, [gameResult]);
 
   useEffect(() => {
     if (isInRoom) handleGameStart();

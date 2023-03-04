@@ -1,7 +1,10 @@
 import ILogin from '../interfaces/ILogin';
 import IPhoneAuthentication from '../interfaces/IPhoneAuthentication';
 import IRegister from '../interfaces/IRegister';
-import ITransaction, { INewTransaction, TransactionFilters } from '../interfaces/ITransaction';
+import {
+  INewTransaction,
+  TransactionFilters,
+} from '../interfaces/ITransaction';
 import IUser, { IUpdateUser } from '../interfaces/IUser';
 import { api } from '../lib/axios';
 
@@ -61,7 +64,7 @@ const requests = {
       editProfile: async (body: IUpdateUser) => {
         const { data } = await api.put('/users/edit-profile', body.profile);
         return data;
-      }
+      },
     },
   },
 };

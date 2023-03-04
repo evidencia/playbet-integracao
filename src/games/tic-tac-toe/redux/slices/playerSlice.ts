@@ -8,8 +8,8 @@ interface PlayerState {
 }
 
 const initialState: PlayerState = {
-  balance: 100,
-  emojis: []
+  balance: 0,
+  emojis: [],
 };
 
 export const playerSlice = createSlice({
@@ -21,7 +21,7 @@ export const playerSlice = createSlice({
     },
     setPlayerEmojis: (state, action: PayloadAction<number[]>) => {
       state.emojis = action.payload;
-    }
+    },
   },
 });
 

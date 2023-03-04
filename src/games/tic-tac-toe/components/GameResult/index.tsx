@@ -22,6 +22,8 @@ import { useTranslation } from 'react-i18next';
 import soundPlay from '../../utils/soundPlay';
 import soundsData from '../../assets/sounds/soundsData';
 import { selectVolumeConfig } from '../../redux/slices/gameSlice';
+import socketService from '../../services/socket.service';
+import gameService from '../../services/game.service';
 
 const Transition = forwardRef(function Transition(
   props: TransitionProps & {
@@ -51,13 +53,27 @@ function GameResult({ gameResult, endGame }: GameResultProps) {
     gameResult === 'Vitória' || gameResult === 'Oponente desistiu';
 
   const updatePlayerBalance = () => {
+    if (!socketService.socket) return;
+
     if (playerWon) {
-      dispatch(setPlayerBalance(playerBalance + betValue));
+      const newBalance = playerBalance + betValue;
+
+      gameService.gameResult(socketService.socket, {
+        bet: newBalance,
+        result: 'Vitória',
+      });
+      dispatch(setPlayerBalance(newBalance));
       soundPlay(isVolumeOn, soundsData.win);
-    } 
+    }
 
     if (gameResult === 'Derrota') {
-      dispatch(setPlayerBalance(playerBalance - betValue));
+      const newBalance = playerBalance - betValue;
+
+      gameService.gameResult(socketService.socket, {
+        bet: newBalance,
+        result: 'Derrota',
+      });
+      dispatch(setPlayerBalance(newBalance));
       soundPlay(isVolumeOn, soundsData.lose);
     }
   };

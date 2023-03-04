@@ -91,6 +91,16 @@ class GameService {
   ) {
     socket.on('on_reset_game', listener);
   }
+
+  public async gameResult(
+    socket: Socket,
+    result: {
+      result: 'Vitória' | 'Derrota';
+      bet: number;
+    }
+  ) {
+    socket.emit('game_result', result);
+  }
 }
 
 export default new GameService();
