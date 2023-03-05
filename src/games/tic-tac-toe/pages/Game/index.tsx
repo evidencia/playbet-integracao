@@ -25,10 +25,11 @@ import { selectVolumeConfig } from '../../redux/slices/gameSlice';
 import {
   selectBalance,
   setPlayerBalance,
+  setPlayerEmojis,
 } from '../../redux/slices/playerSlice';
 import ResultsModal from '../../components/ResultsModal';
-import { useTranslation } from 'react-i18next';
 import requests from '../../../../services/requests';
+import { useTranslation } from 'react-i18next';
 
 function Game() {
   const { t } = useTranslation();
@@ -59,7 +60,10 @@ function Game() {
 
   const setPlayerData = async () => {
     const user = await requests.get.auth.userInformations();
+    const userEmojis = await requests.get.emojis.userEmojis(user.id);
+
     dispatch(setPlayerBalance(user.account.balance));
+    dispatch(setPlayerEmojis(userEmojis));
   };
 
   const skipPlayerTurn = () => {

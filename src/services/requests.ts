@@ -6,7 +6,7 @@ import {
   TransactionFilters,
 } from '../interfaces/ITransaction';
 import IUser, { IUpdateUser } from '../interfaces/IUser';
-import { api } from '../lib/axios';
+import { api, ticTacToeApi } from '../lib/axios';
 
 export const setTokenHeaders = (token: string) => {
   api.defaults.headers.common.Authorization = token;
@@ -38,6 +38,11 @@ const requests = {
         return data;
       },
     },
+    emojis: {
+      addToUser: async (body: { userId: string; emojiId: number }) => {
+        await ticTacToeApi.post('/user/add-emoji', body);
+      },
+    },
   },
   get: {
     auth: {
@@ -51,6 +56,12 @@ const requests = {
         const { data } = await api.get(`/transactions/user/${userId}`, {
           params: filters,
         });
+        return data;
+      },
+    },
+    emojis: {
+      userEmojis: async (userId: string) => {
+        const { data } = await ticTacToeApi.get(`/user/${userId}/emojis`);
         return data;
       },
     },

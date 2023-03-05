@@ -11,6 +11,9 @@ import {
   selectPlayerEmojis,
   setPlayerEmojis,
 } from '../../../redux/slices/playerSlice';
+import requests from '../../../../../services/requests';
+import { getUserInStorage } from '../../../../../utils/localStorage';
+import { IUserInStorage } from '../../../../../interfaces/IUser';
 
 interface BuyEmojiModalProps {
   open: boolean;
@@ -27,7 +30,10 @@ function BuyEmojiModal({ open, setBuyEmoji, emojiId }: BuyEmojiModalProps) {
     setBuyEmoji(0);
   };
 
-  const buy = () => {
+  const buy = async () => {
+    const user = getUserInStorage() as IUserInStorage;
+    await requests.post.emojis.addToUser({ emojiId, userId: user.id });
+
     dispatch(setPlayerEmojis([...playerEmojis, emojiId]));
     handleClose();
   };
