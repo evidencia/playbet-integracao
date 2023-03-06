@@ -15,7 +15,9 @@ class SocketService {
     return new Promise((resolves, rejects) => {
       this.socket = io(url, {
         closeOnBeforeunload: false,
-        query: { userId: this.userId },
+        auth: {
+          userId: this.userId,
+        },
       });
 
       if (!this.socket) {

@@ -33,6 +33,8 @@ import { selectVolumeConfig } from '../../redux/slices/gameSlice';
 import { useBeforeunload } from 'react-beforeunload';
 import gameService from '../../services/game.service';
 import { AlertContainer } from '../AlertModal/styles';
+import { getUserInStorage } from '../../../../utils/localStorage';
+import { IUserInStorage } from '../../../../interfaces/IUser';
 
 export interface DialogTitleProps {
   id: string;
@@ -123,7 +125,9 @@ function WaitingOpponent({
 
   const setPlayerData = async () => {
     if (!socketService.socket) return;
-    setPlayerOneData({ name: socketService.socket.id });
+    const user = getUserInStorage() as IUserInStorage;
+
+    setPlayerOneData({ name: user.username });
   };
 
   const handlePlayerData = async () => {
@@ -186,7 +190,7 @@ function WaitingOpponent({
               {playerOneData.name.split('')[0]}
             </PlayerAvatar>
 
-            <p>{playerOneData.name.split('').slice(0, 6)}</p>
+            <p>{playerOneData.name.split('').slice(0, 13)}</p>
           </PlayerContainer>
 
           {!opponentHasQuit &&
@@ -197,7 +201,7 @@ function WaitingOpponent({
               {playerTwoData.name.split('')[0]}
             </PlayerAvatar>
 
-            <p>{playerTwoData.name.split('').slice(0, 6)}</p>
+            <p>{playerTwoData.name.split('').slice(0, 13)}</p>
           </PlayerContainer>
         </PlayersInformations>
 
