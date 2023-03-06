@@ -66,8 +66,12 @@ class GameService {
     socket.emit('stop_timer').emit('game_end');
   }
 
-  public async quitGame(socket: Socket, opponentQuit: boolean = false) {
-    socket.emit('stop_timer').emit('quit_game', opponentQuit);
+  public async quitGame(
+    socket: Socket,
+    opponentQuit: boolean = false,
+    betValue?: number
+  ) {
+    socket.emit('stop_timer').emit('quit_game', { opponentQuit, betValue });
   }
 
   public async stopGameTimer(socket: Socket) {

@@ -56,6 +56,7 @@ function Game() {
     setQuitGame,
     setPlayerOneData,
     setPlayerTwoData,
+    betValue,
   } = useContext(GameContext);
 
   const setPlayerData = async () => {
@@ -117,7 +118,7 @@ function Game() {
     if (!socketService.socket) return;
 
     const quit = true;
-    gameService.quitGame(socketService.socket, quit);
+    gameService.quitGame(socketService.socket, quit, betValue);
 
     setAlert('');
     setGameResult('Derrota');

@@ -66,6 +66,7 @@ function GameHeader({
     isPlayerTurn,
     isGameStarted,
     hadRematch,
+    betValue,
   } = useContext(GameContext);
 
   useBeforeunload(() => {
@@ -76,7 +77,7 @@ function GameHeader({
     if (!gameResult || drawResult) {
       const opponentHasQuit = !gameResult || !hadRematch;
       gameService.rematch(socketService.socket, false);
-      gameService.quitGame(socketService.socket, opponentHasQuit);
+      gameService.quitGame(socketService.socket, opponentHasQuit, betValue);
     }
   });
 
