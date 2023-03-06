@@ -14,6 +14,7 @@ import {
 import requests from '../../../../../services/requests';
 import { getUserInStorage } from '../../../../../utils/localStorage';
 import { IUserInStorage } from '../../../../../interfaces/IUser';
+import { AlertContainer } from '../../AlertModal/styles';
 
 interface BuyEmojiModalProps {
   open: boolean;
@@ -39,9 +40,14 @@ function BuyEmojiModal({ open, setBuyEmoji, emojiId }: BuyEmojiModalProps) {
   };
 
   return (
-    <Dialog
+    <AlertContainer
       open={open}
       onClose={handleClose}
+      sx={{ right: '0 !important' }}
+      hideBackdrop
+      disableScrollLock
+      disableEnforceFocus
+      disableAutoFocus
       aria-labelledby='alert-dialog-title'
       aria-describedby='alert-dialog-description'
     >
@@ -61,7 +67,7 @@ function BuyEmojiModal({ open, setBuyEmoji, emojiId }: BuyEmojiModalProps) {
           {t('Comprar')}
         </Button>
       </DialogActions>
-    </Dialog>
+    </AlertContainer>
   );
 }
 

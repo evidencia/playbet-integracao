@@ -7,5 +7,6 @@ export const AppContainer = styled(Grid)`
   flex-direction: column;
   justify-content: center;
   min-height: 600px;
+  height: 600px;
   width: 100%;
 `;

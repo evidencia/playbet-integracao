@@ -1,17 +1,9 @@
-import {
-  forwardRef,
-  ReactElement,
-  Ref,
-  useContext,
-  useEffect,
-  useState,
-} from 'react';
+import { useContext, useEffect, useState } from 'react';
 import gameService from '../../services/game.service';
 import socketService from '../../services/socket.service';
 import RematchButton from '../RematchButton';
 import GameContext from '../../contexts/GameContext';
-import { Slide, Box, Dialog, DialogContentText } from '@mui/material';
-import { TransitionProps } from '@mui/material/transitions';
+import { Box, DialogContentText } from '@mui/material';
 import QuitGameButton from '../QuitGameButton';
 import formatToBRL from '../../utils/formatToBRL';
 import {
@@ -29,15 +21,7 @@ import AlertModal from '../AlertModal';
 import soundPlay from '../../utils/soundPlay';
 import soundsData from '../../assets/sounds/soundsData';
 import { selectVolumeConfig } from '../../redux/slices/gameSlice';
-
-const Transition = forwardRef(function Transition(
-  props: TransitionProps & {
-    children: ReactElement<any, any>;
-  },
-  ref: Ref<unknown>
-) {
-  return <Slide direction='up' ref={ref} {...props} />;
-});
+import { AlertContainer } from '../AlertModal/styles';
 
 interface GameResultDrawProps {
   gameResult: string;
@@ -97,9 +81,12 @@ function GameResultDraw({
           handleClose={endGame}
         />
       )}
-      <Dialog
+      <AlertContainer
+        hideBackdrop
+        disableScrollLock
+        disableEnforceFocus
+        disableAutoFocus
         open={!!gameResult}
-        TransitionComponent={Transition}
         keepMounted
         aria-describedby='alert-dialog-slide-description'
       >
@@ -136,7 +123,7 @@ function GameResultDraw({
             />
           </GameResultButtons>
         </GameResultContainer>
-      </Dialog>
+      </AlertContainer>
     </div>
   );
 }

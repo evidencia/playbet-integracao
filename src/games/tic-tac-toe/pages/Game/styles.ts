@@ -7,8 +7,7 @@ export const GameContainer = styled.div`
   background-color: ${grey[900]};
   flex-direction: column;
   gap: 2vmin;
-  min-height: 90vh;
-  max-height: 90vh;
+  height: 590px;
   max-width: 700px;
   width: 100%;
   align-items: center;

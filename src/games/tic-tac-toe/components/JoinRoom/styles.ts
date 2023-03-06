@@ -7,8 +7,7 @@ export const GameRoom = styled(Box)`
   display: flex;
   flex-direction: column;
   width: 100%;
-  min-height: 90vh;
-  max-height: 90vh;
+  height: 590px;
   gap: 100px;
   justify-content: center;
   align-items: center;
@@ -28,8 +27,7 @@ export const BetContainer = styled(Box)`
 
 export const MenuContainer = styled(Box)`
   border: 1px solid rgba(235, 235, 235, 0.1);
-  min-height: 90vh;
-  max-height: 90vh;
+  height: 590px;
   max-width: 700px;
   width: 100%;
   display: flex;

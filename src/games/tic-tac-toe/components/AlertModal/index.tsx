@@ -1,25 +1,14 @@
 import { forwardRef, ReactElement, Ref } from 'react';
 import {
   Box,
-  Dialog,
   DialogActions,
   DialogContent,
   DialogContentText,
   Slide,
 } from '@mui/material';
-import { TransitionProps } from '@mui/material/transitions';
-import { ConfirmButton } from './styles';
+import { AlertContainer, ConfirmButton } from './styles';
 import InsufficientBalanceModal from '../InsufficientBalanceModal';
 import { useTranslation } from 'react-i18next';
-
-const Transition = forwardRef(function Transition(
-  props: TransitionProps & {
-    children: ReactElement<any, any>;
-  },
-  ref: Ref<unknown>
-) {
-  return <Slide direction='up' ref={ref} {...props} />;
-});
 
 interface AlertModalProps {
   alertText: string;
@@ -45,12 +34,15 @@ function AlertModal({
   };
 
   return (
-    <Dialog
+    <AlertContainer
       onClose={closeOutsideArea}
       open={!!alertText}
-      TransitionComponent={Transition}
       keepMounted
-      sx={{ zIndex: 9999 }}
+      sx={{ zIndex: 999 }}
+      hideBackdrop
+      disableScrollLock
+      disableEnforceFocus
+      disableAutoFocus
       aria-describedby='alert-dialog-slide-description'
     >
       {alertText === 'Saldo insuficiente' ? (
@@ -89,7 +81,7 @@ function AlertModal({
           </DialogActions>
         </Box>
       )}
-    </Dialog>
+    </AlertContainer>
   );
 }
 

@@ -50,6 +50,7 @@ function SelectEmoji({
   return (
     <Box>
       <Menu
+        disableScrollLock
         id='basic-menu'
         anchorEl={anchorEl}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}

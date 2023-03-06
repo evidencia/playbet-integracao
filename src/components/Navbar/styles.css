@@ -3,11 +3,11 @@
   justify-content: space-between;
   align-items: center;
 
-  height: 68px;
+  height: 15vh;
   background: transparent;
   color: white;
   padding: 1rem;
-  margin-top: 20px;
+  /* margin-top: 20px; */
 }
 
 .navbar img{
@@ -122,8 +122,7 @@
   
 @media only screen and (min-width: 992px) {
   .navbar{
-    max-width: 1120px;
-    margin: 40px auto;
+    /* margin: 40px auto; */
   }
 
   .navbar img{

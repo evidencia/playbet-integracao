@@ -7,6 +7,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { BoldRule, DrawRule, RuleTitle } from './styles';
 import { useTranslation } from 'react-i18next';
+import { AlertContainer } from '../AlertModal/styles';
 
 interface RulesModalProps {
   open: boolean;
@@ -32,7 +33,11 @@ function RulesModal({ open, setOpen }: RulesModalProps) {
   }, [open]);
 
   return (
-    <Dialog
+    <AlertContainer
+      hideBackdrop
+      disableScrollLock
+      disableEnforceFocus
+      disableAutoFocus
       open={open}
       onClose={handleClose}
       scroll={scroll}
@@ -76,7 +81,7 @@ function RulesModal({ open, setOpen }: RulesModalProps) {
       <DialogActions>
         <Button onClick={handleClose}>OK</Button>
       </DialogActions>
-    </Dialog>
+    </AlertContainer>
   );
 }
 

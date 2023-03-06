@@ -32,6 +32,7 @@ import soundsData from '../../assets/sounds/soundsData';
 import { selectVolumeConfig } from '../../redux/slices/gameSlice';
 import { useBeforeunload } from 'react-beforeunload';
 import gameService from '../../services/game.service';
+import { AlertContainer } from '../AlertModal/styles';
 
 export interface DialogTitleProps {
   id: string;
@@ -162,8 +163,13 @@ function WaitingOpponent({
   const doesPlayerTwoExists = !!playerTwoData.name;
 
   return (
-    <Dialog
+    <AlertContainer
       open={!isGameStarted}
+      sx={{ left: '30px !important' }}
+      hideBackdrop
+      disableScrollLock
+      disableEnforceFocus
+      disableAutoFocus
       aria-labelledby='alert-dialog-title'
       aria-describedby='alert-dialog-description'
     >
@@ -212,7 +218,7 @@ function WaitingOpponent({
           )}
         </WaitingOpponentActions>
       </WaitingOpponentContainer>
-    </Dialog>
+    </AlertContainer>
   );
 }
 

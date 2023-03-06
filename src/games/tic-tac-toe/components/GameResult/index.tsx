@@ -1,7 +1,6 @@
-import { forwardRef, ReactElement, Ref, useContext, useEffect } from 'react';
-import { TransitionProps } from '@mui/material/transitions';
+import { useContext, useEffect } from 'react';
 import GameContext from '../../contexts/GameContext';
-import { Box, DialogContentText, Dialog, Slide } from '@mui/material';
+import { Box, DialogContentText } from '@mui/material';
 import QuitGameButton from '../QuitGameButton';
 import { green, red } from '@mui/material/colors';
 import formatToBRL from '../../utils/formatToBRL';
@@ -24,15 +23,7 @@ import soundsData from '../../assets/sounds/soundsData';
 import { selectVolumeConfig } from '../../redux/slices/gameSlice';
 import socketService from '../../services/socket.service';
 import gameService from '../../services/game.service';
-
-const Transition = forwardRef(function Transition(
-  props: TransitionProps & {
-    children: ReactElement<any, any>;
-  },
-  ref: Ref<unknown>
-) {
-  return <Slide direction='up' ref={ref} {...props} />;
-});
+import { AlertContainer } from '../AlertModal/styles';
 
 interface GameResultProps {
   gameResult: string;
@@ -87,9 +78,12 @@ function GameResult({ gameResult, endGame }: GameResultProps) {
 
   return (
     <div>
-      <Dialog
+      <AlertContainer
+        hideBackdrop
+        disableScrollLock
+        disableEnforceFocus
+        disableAutoFocus
         open={['Vitória', 'Derrota'].includes(gameResult)}
-        TransitionComponent={Transition}
         keepMounted
         aria-describedby='alert-dialog-slide-description'
       >
@@ -127,7 +121,7 @@ function GameResult({ gameResult, endGame }: GameResultProps) {
             <QuitGameButton endGame={endGame} buttonText={'Menu principal'} />
           </GameResultButtons>
         </GameResultContainer>
-      </Dialog>
+      </AlertContainer>
     </div>
   );
 }
